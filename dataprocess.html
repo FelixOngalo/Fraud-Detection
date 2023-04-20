@@ -1,0 +1,34 @@
+<!-- HTML code for the data display page -->
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Transaction Type</th>
+      <th>Location</th>
+      <th>Time of Day</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% transactions.forEach((transaction) => { %>
+      <tr>
+        <td><%= transaction.amount %></td>
+        <td><%= transaction.transactionType %></td>
+        <td><%= transaction.location %></td>
+        <td><%= transaction.timeOfDay %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<form action="/preprocess" method="POST">
+  <input type="checkbox" id="removeDuplicates" name="removeDuplicates">
+  <label for="removeDuplicates">Remove duplicates</label><br><br>
+
+  <input type="checkbox" id="removeMissingValues" name="removeMissingValues">
+  <label for="removeMissingValues">Remove missing values</label><br><br>
+
+  <input type="checkbox" id="removeOutliers" name="removeOutliers">
+  <label for="removeOutliers">Remove outliers</label><br><br>
+
+  <input type="submit" value="Preprocess">
+</form>
